@@ -1,7 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
   const schedules = {
-    simon: { /* wie vorher */ },
-    luisa: { /* wie vorher */ }
+    simon: {
+      Montag: ['BSS','Mathe','Musik','Deutsch','Kunst','Kunst'],
+      Dienstag: ['Mathe','Deutsch','Deutsch','Sachunterricht','Religion','Englisch'],
+      Mittwoch: ['','Deutsch','Detusch','Mathe','Sachunterricht',''],
+      Donnerstag: ['Sport','Religion','Deutsch','Englisch','Mathe','Musik'],
+      Freitag: ['Schwimmen','Schwimmen','Deutsch','Mathe','Sachunterricht','']
+    },
+    luisa: {
+      Montag: ['Anfangsunterricht Bähr','Anfangsunterricht Bähr','Anfangsunterricht Bähr','Sport','Anfangsunterricht Schmälzle','Musik'],
+      Dienstag: ['','Religion','Kunst','Musik','Kunst',''],
+      Mittwoch: ['Anfangsunterricht Schmälzle','Anfangsunterricht Schmälzle','Sport','Anfangsunterricht Schmälzle','Anfangsunterricht Bähr','Chor AG'],
+      Donnerstag: ['Anfangsunterricht Bähr','Anfangsunterricht Bähr','Anfangsunterricht Schmälzle','Anfangsunterricht Schmälzle','Anfangsunterricht Schmälzle','Anfangsunterricht Schmälzle'],
+      Freitag: ['Anfangsunterricht Bähr','Religion','Anfangsunterricht Schmälzle','Sport','Anfangsunterricht Schmälzle','']
+    }
   };
 
   const days = ["Montag","Dienstag","Mittwoch","Donnerstag","Freitag"];
@@ -45,32 +57,36 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("currentTime").textContent = now.toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"});
 
     // Alle Highlights entfernen
-    container.querySelectorAll("td, th").forEach(el => el.classList.remove("row-now","col-day-current"));
+    container.querySelectorAll("td").forEach(td => td.classList.remove("row-now","col-day-current"));
 
     // Aktueller Tag = Spalte markieren
     const dayIndex = days.indexOf(weekday);
     if(dayIndex >= 0){
-      container.querySelectorAll("tbody tr").forEach(tr => {
-        tr.querySelectorAll("td")[dayIndex].classList.add("col-day-current");
-      });
+        container.querySelectorAll("tbody tr").forEach(tr => {
+            const cells = tr.querySelectorAll("td");
+            if(cells[dayIndex]) cells[dayIndex].classList.add("col-day-current");
+        });
     }
 
     // Aktuelle Stunde = Zeile markieren
     const rowIndex = times.findIndex(t => minutes >= hmToMinutes(t.from) && minutes < hmToMinutes(t.to));
     if(rowIndex >= 0 && dayIndex >= 0){
-      const tr = container.querySelectorAll("tbody tr")[rowIndex];
-      tr.querySelectorAll("td")[dayIndex].classList.add("row-now");
-      document.getElementById("currentLesson").textContent = `Aktuell: ${times[rowIndex].from}-${times[rowIndex].to}`;
+        const tr = container.querySelectorAll("tbody tr")[rowIndex];
+        if(tr){
+            const cell = tr.querySelectorAll("td")[dayIndex];
+            if(cell) cell.classList.add("row-now");
+            document.getElementById("currentLesson").textContent = `Aktuell: ${times[rowIndex].from}-${times[rowIndex].to} · ${cell.textContent}`;
+        }
     } else {
-      document.getElementById("currentLesson").textContent = "Aktuell: Keine laufende Stunde";
+        document.getElementById("currentLesson").textContent = "Aktuell: Keine laufende Stunde";
     }
   }
 
-  // Initial: nur Simon bauen
-  buildTable(document.getElementById("simon"), schedules.simon);
-  updateHighlights(document.getElementById("simon"));
+  // Tabs initial
+  const simonTab = document.getElementById("simon");
+  buildTable(simonTab, schedules.simon);
+  updateHighlights(simonTab);
 
-  // Tabs
   document.querySelectorAll('.tab').forEach(btn=>{
     btn.addEventListener('click',()=>{
       document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
@@ -79,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const target = document.getElementById(btn.dataset.target);
       target.classList.add('active');
 
-      // Tabelle für den Tab bauen, falls leer (wichtig für iOS)
+      // Tabelle bauen, falls noch nicht vorhanden (wichtig für iOS)
       if(!target.querySelector("table")){
         buildTable(target, schedules[btn.dataset.target]);
       }
@@ -87,9 +103,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Aktualisierung alle 30 Sekunden für sichtbaren Tab
+  // Update alle 30 Sekunden
   setInterval(() => {
     const activePlan = document.querySelector(".plan.active");
     if(activePlan) updateHighlights(activePlan);
-  },30000);
+  }, 30000);
+
+  // Update beim Zurückkehren in den Tab
+  window.addEventListener('visibilitychange', () => {
+    const activePlan = document.querySelector(".plan.active");
+    if(!document.hidden && activePlan) updateHighlights(activePlan);
+  });
 });
