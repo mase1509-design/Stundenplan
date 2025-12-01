@@ -65,15 +65,20 @@ document.addEventListener("DOMContentLoaded", () => {
       el.classList.remove("row-now","col-day-current");
     });
 
-    // Aktuellen Tag markieren
-    document.querySelectorAll(`td[data-day="${weekday}"]`).forEach(td => td.classList.add("col-day-current"));
+    // Aktueller Tag = Spalte markieren
+    const dayIndex = days.indexOf(weekday);
+    if(dayIndex >= 0){
+      document.querySelectorAll("tbody tr").forEach(tr => {
+        tr.querySelectorAll("td")[dayIndex].classList.add("col-day-current");
+      });
+    }
 
-    // Aktuelle Stunde markieren
-    const idx = times.findIndex(t => minutes >= hmToMinutes(t.from) && minutes < hmToMinutes(t.to));
-    if(idx >= 0){
-      const tr = document.querySelectorAll("tbody tr")[idx];
-      tr.querySelectorAll("td")[days.indexOf(weekday)].classList.add("row-now");
-      document.getElementById("currentLesson").textContent = `Aktuell: ${times[idx].from}-${times[idx].to}`;
+    // Aktuelle Stunde = Zeile markieren
+    const rowIndex = times.findIndex(t => minutes >= hmToMinutes(t.from) && minutes < hmToMinutes(t.to));
+    if(rowIndex >= 0){
+      const tr = document.querySelectorAll("tbody tr")[rowIndex];
+      tr.querySelectorAll("td")[dayIndex].classList.add("row-now");
+      document.getElementById("currentLesson").textContent = `Aktuell: ${times[rowIndex].from}-${times[rowIndex].to}`;
     } else {
       document.getElementById("currentLesson").textContent = "Aktuell: Keine laufende Stunde";
     }
