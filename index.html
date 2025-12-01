@@ -1,41 +1,53 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Stundenplan</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Stundenplan</title>
 
-  <link rel="icon" href="logo.png" />
-  <link rel="apple-touch-icon" href="logo.png" />
-  <link rel="manifest" href="manifest.json" />
 
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-title" content="Stundenplan" />
+<link rel="icon" href="logo.png" />
+<link rel="apple-touch-icon" href="logo.png" />
+<link rel="manifest" href="manifest.json" />
 
-  <link rel="stylesheet" href="styles.css" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="Stundenplan" />
+
+
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="top">
-    <img src="logo.png" alt="App Logo" class="logo" />
-    <h1>Stundenplan</h1>
-  </header>
+<header class="top">
+<img src="logo.png" alt="App Logo" class="logo" />
+<h1>Stundenplan</h1>
+</header>
 
-  <main class="container">
-    <div class="tabs">
-      <button class="tab active" data-target="simon">Simon</button>
-      <button class="tab" data-target="luisa">Luisa</button>
-    </div>
 
-    <section id="simon" class="plan active"></section>
-    <section id="luisa" class="plan"></section>
+<main class="container">
+<nav class="tabs">
+<button data-target="simon" class="tab active">Simon</button>
+<button data-target="luisa" class="tab">Luisa</button>
+</nav>
 
-    <div class="nowinfo">
-      <div id="currentDate"></div>
-      <div id="currentTime"></div>
-      <div id="currentLesson"></div>
-    </div>
-  </main>
 
-  <script src="app.js"></script>
+<section id="simon" class="plan active"></section>
+<section id="luisa" class="plan"></section>
+
+
+<div class="nowinfo">
+<div id="currentDate"></div>
+<div id="currentTime"></div>
+<div id="currentLesson"></div>
+</div>
+
+
+<footer class="foot">
+Bildung ist die mächtigste Waffe, die du verwenden kannst, um die Welt zu verändern. Frohes lernen :-) 
+</footer>
+</main>
+
+
+<script src="app.js"></script>
 </body>
 </html>
