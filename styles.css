@@ -1,29 +1,30 @@
 :root{
-  --accent:#2b8aee;
-  --muted:#f3f6fb;
-  --highlight-day:rgba(43,138,238,0.12);
-  --highlight-now:rgba(255,220,120,0.45);
-  --text:#222;
-  font-family: system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+--accent:#2b8aee;
+--muted:#f3f6fb;
+--highlight:rgba(43,138,238,0.12);
+--now:rgba(255,220,120,0.35);
+--text:#222;
+font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
-
-body{margin:0;background:#fff;color:var(--text)}
+*{box-sizing:border-box}
+body{margin:0;color:var(--text);background:#fff}
 .top{display:flex;align-items:center;gap:.8rem;padding:14px;border-bottom:1px solid #eee}
-.logo{width:56px;height:56px}
-.container{padding:16px;max-width:900px;margin:auto}
-
+.logo{width:48px;height:48px;object-fit:contain;border-radius:8px}
+h1{margin:0;font-size:1.25rem}
+.tz{margin-left:auto;font-size:.8rem;color:#666}
+.container{padding:16px;max-width:920px;margin:0 auto}
 .tabs{display:flex;gap:8px;margin-bottom:12px}
-.tab{padding:8px 16px;border:1px solid #ccc;background:#fff;border-radius:8px;cursor:pointer}
-.tab.active{background:var(--accent);color:#fff}
-
+.tab{padding:8px 12px;border:1px solid #ddd;background:#fff;border-radius:10px;cursor:pointer}
+.tab.active{background:var(--accent);color:#fff;border-color:transparent}
 .plan{display:none}
 .plan.active{display:block}
-
 .table{width:100%;border-collapse:collapse}
-.table th,.table td{border:1px solid #e5e5e5;padding:8px;text-align:center}
+.table th,.table td{padding:8px;border:1px solid #eee;text-align:left;font-size:.95rem}
 .table th{background:var(--muted)}
-
-.col-day-current{background:var(--highlight-day)}
-.row-now{background:var(--highlight-now);font-weight:bold}
-
-.nowinfo{margin-top:16px;padding:10px;border-radius:8px;background:#fafafa;border:1px solid #eee}
+.col-day-current{background:var(--highlight)}
+.row-now{background:var(--now);font-weight:600}
+.nowinfo{margin-top:12px;padding:10px;border-radius:8px;background:#fafafa;border:1px solid #f0f0f0}
+.foot{margin-top:14px;color:#666;font-size:.9rem}
+@media (max-width:600px){
+.table th,.table td{font-size:.9rem;padding:6px}
+}
