@@ -48,8 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
     container.innerHTML = html;
   }
 
-  buildTable(document.getElementById("simon"), schedules.simon);
-  buildTable(document.getElementById("luisa"), schedules.luisa);
+  // Tabellen in die jeweiligen Sektionen bauen
+  const simonContainer = document.getElementById("simon");
+  const luisaContainer = document.getElementById("luisa");
+  buildTable(simonContainer, schedules.simon);
+  buildTable(luisaContainer, schedules.luisa);
 
   function updateHighlights(){
     const now = new Date();
@@ -59,14 +62,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("currentDate").textContent = now.toLocaleDateString("de-DE",{weekday:"long",year:"numeric",month:"long",day:"numeric"});
     document.getElementById("currentTime").textContent = now.toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"});
 
-    // Remove old highlights
+    // Alle Highlights entfernen
     document.querySelectorAll("tr[data-day] td").forEach(td=>td.classList.remove("row-now"));
     document.querySelectorAll("th.col-day-current").forEach(th=>th.classList.remove("col-day-current"));
 
-    // Highlight current day
+    // Aktuellen Tag markieren
     document.querySelectorAll(`tr[data-day="${weekday}"]`).forEach(tr=>tr.querySelector("th").classList.add("col-day-current"));
 
-    // Highlight current lesson
+    // Aktuelle Stunde markieren
     const idx = times.findIndex(t => minutes >= hmToMinutes(t.from) && minutes < hmToMinutes(t.to));
     if(idx >= 0){
       document.querySelectorAll(`tr[data-day]`).forEach(tr=>{
@@ -81,14 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
   updateHighlights();
   setInterval(updateHighlights,30000);
 
-  // Tab switching
+  // Tabs Umschalten
   document.querySelectorAll('.tab').forEach(btn=>{
     btn.addEventListener('click',()=>{
       document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
       btn.classList.add('active');
-      document.querySelectorAll('.plan').forEach(p=>p.classList.remove('active'));
-      document.getElementById(btn.dataset.target).classList.add('active');
-      updateHighlights();
-    });
-  });
-});
+      document.querySelector
