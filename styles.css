@@ -27,4 +27,5 @@ h1{margin:0;font-size:1.25rem}
 .foot{margin-top:14px;color:#666;font-size:.9rem}
 @media (max-width:600px){
 .table th,.table td{font-size:.9rem;padding:6px}
+h3{margin:0;font-size:0.75rem}
 }
