@@ -32,14 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function buildTable(container, plan){
-    let html = `<table class="table"><thead><tr><th>Wochentag</th>`;
-    times.forEach(t => html += `<th>${t.from}<br>${t.to}</th>`);
+    let html = `<table class="table"><thead><tr><th>Zeit</th>`;
+    days.forEach(day => html += `<th>${day}</th>`);
     html += `</tr></thead><tbody>`;
 
-    days.forEach(day => {
-      html += `<tr data-day="${day}"><th>${day}</th>`;
-      plan[day].forEach(lesson => {
-        html += `<td>${lesson || ''}</td>`;
+    times.forEach((t, idx) => {
+      html += `<tr data-time="${t.from}-${t.to}"><th>${t.from} - ${t.to}</th>`;
+      days.forEach(day => {
+        html += `<td data-day="${day}" data-time="${t.from}-${t.to}">${plan[day][idx] || ''}</td>`;
       });
       html += `</tr>`;
     });
@@ -48,11 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
     container.innerHTML = html;
   }
 
-  // Tabellen in die jeweiligen Sektionen bauen
-  const simonContainer = document.getElementById("simon");
-  const luisaContainer = document.getElementById("luisa");
-  buildTable(simonContainer, schedules.simon);
-  buildTable(luisaContainer, schedules.luisa);
+  // Tabellen erstellen
+  buildTable(document.getElementById("simon"), schedules.simon);
+  buildTable(document.getElementById("luisa"), schedules.luisa);
 
   function updateHighlights(){
     const now = new Date();
@@ -63,18 +61,18 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("currentTime").textContent = now.toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"});
 
     // Alle Highlights entfernen
-    document.querySelectorAll("tr[data-day] td").forEach(td=>td.classList.remove("row-now"));
-    document.querySelectorAll("th.col-day-current").forEach(th=>th.classList.remove("col-day-current"));
+    document.querySelectorAll("td, th").forEach(el => {
+      el.classList.remove("row-now","col-day-current");
+    });
 
     // Aktuellen Tag markieren
-    document.querySelectorAll(`tr[data-day="${weekday}"]`).forEach(tr=>tr.querySelector("th").classList.add("col-day-current"));
+    document.querySelectorAll(`td[data-day="${weekday}"]`).forEach(td => td.classList.add("col-day-current"));
 
     // Aktuelle Stunde markieren
     const idx = times.findIndex(t => minutes >= hmToMinutes(t.from) && minutes < hmToMinutes(t.to));
     if(idx >= 0){
-      document.querySelectorAll(`tr[data-day]`).forEach(tr=>{
-        tr.querySelectorAll("td")[idx].classList.add("row-now");
-      });
+      const tr = document.querySelectorAll("tbody tr")[idx];
+      tr.querySelectorAll("td")[days.indexOf(weekday)].classList.add("row-now");
       document.getElementById("currentLesson").textContent = `Aktuell: ${times[idx].from}-${times[idx].to}`;
     } else {
       document.getElementById("currentLesson").textContent = "Aktuell: Keine laufende Stunde";
@@ -84,9 +82,14 @@ document.addEventListener("DOMContentLoaded", () => {
   updateHighlights();
   setInterval(updateHighlights,30000);
 
-  // Tabs Umschalten
+  // Tab Logik
   document.querySelectorAll('.tab').forEach(btn=>{
     btn.addEventListener('click',()=>{
       document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
       btn.classList.add('active');
-      document.querySelector
+      document.querySelectorAll('.plan').forEach(p=>p.classList.remove('active'));
+      document.getElementById(btn.dataset.target).classList.add('active');
+      updateHighlights();
+    });
+  });
+});
