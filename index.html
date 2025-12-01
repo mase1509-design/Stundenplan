@@ -1,54 +1,45 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Stundenplan</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stundenplan</title>
 
+  <link rel="icon" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="manifest" href="manifest.json" />
 
-<!-- Icon / logo.png im selben Verzeichnis erwartet -->
-<link rel="icon" href="logo.png" />
-<link rel="apple-touch-icon" href="logo.png" />
-<link rel="manifest" href="manifest.json" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Stundenplan" />
 
-
-<!-- Apple meta for full screen -->
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-title" content="Stundenplan" />
-
-
-<link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<header class="top">
-<img src="logo.png" alt="App Logo" class="logo" />
-<h1>Stundenplan</h1>
-</header>
+  <header class="top">
+    <img src="logo.png" alt="App Logo" class="logo" />
+    <h1>Stundenplan</h1>
+  </header>
 
+  <main class="container">
+    <nav class="tabs" aria-label="Personen">
+      <button data-target="simon" class="tab active" aria-pressed="true">Simon</button>
+      <button data-target="luisa" class="tab" aria-pressed="false">Luisa</button>
+    </nav>
 
-<main class="container">
-<nav class="tabs">
-<button data-target="simon" class="tab active">Simon</button>
-<button data-target="luisa" class="tab">Luisa</button>
-</nav>
+    <section id="simon" class="plan active" aria-hidden="false"></section>
+    <section id="luisa" class="plan" aria-hidden="true"></section>
 
+    <div class="nowinfo" aria-live="polite">
+      <div id="currentDate"></div>
+      <div id="currentTime"></div>
+      <div id="currentLesson"></div>
+    </div>
 
-<section id="simon" class="plan active"></section>
-<section id="luisa" class="plan"></section>
+    <footer class="foot">
+Frohes lernen :-)
+    </footer>
+  </main>
 
-
-<div class="nowinfo">
-<div id="currentDate"></div>
-<div id="currentTime"></div>
-<div id="currentLesson"></div>
-</div>
-
-
-<footer class="foot">
-</footer>
-</main>
-
-
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
