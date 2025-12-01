@@ -21,23 +21,19 @@
   </header>
 
   <main class="container">
-    <nav class="tabs" aria-label="Personen">
-      <button data-target="simon" class="tab active" aria-pressed="true">Simon</button>
-      <button data-target="luisa" class="tab" aria-pressed="false">Luisa</button>
-    </nav>
+    <div class="tabs">
+      <button class="tab active" data-target="simon">Simon</button>
+      <button class="tab" data-target="luisa">Luisa</button>
+    </div>
 
-    <section id="simon" class="plan active" aria-hidden="false"></section>
-    <section id="luisa" class="plan" aria-hidden="true"></section>
+    <section id="simon" class="plan active"></section>
+    <section id="luisa" class="plan"></section>
 
-    <div class="nowinfo" aria-live="polite">
+    <div class="nowinfo">
       <div id="currentDate"></div>
       <div id="currentTime"></div>
       <div id="currentLesson"></div>
     </div>
-
-    <footer class="foot">
-Frohes lernen :-)
-    </footer>
   </main>
 
   <script src="app.js"></script>
