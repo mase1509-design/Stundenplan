@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
       Freitag: ['Schwimmen','Schwimmen','Deutsch','Mathe','Sachunterricht','']
     },
     luisa: {
-      Montag: ['Anfangsunterricht Bähr','Anfangsunterricht Bähr','Anfangsunterricht Bähr','Sport','Anfangsunterricht Schmälzle','Musik'],
-      Dienstag: ['','Religion','Kunst','Musik','Kunst',''],
-      Mittwoch: ['Anfangsunterricht Schmälzle','Anfangsunterricht Schmälzle','Sport','Anfangsunterricht Schmälzle','Anfangsunterricht Bähr','Chor AG'],
-      Donnerstag: ['Anfangsunterricht Bähr','Anfangsunterricht Bähr','Anfangsunterricht Schmälzle','Anfangsunterricht Schmälzle','Anfangsunterricht Schmälzle','Anfangsunterricht Schmälzle'],
-      Freitag: ['Anfangsunterricht Bähr','Religion','Anfangsunterricht Schmälzle','Sport','Anfangsunterricht Schmälzle','']
+      Montag: ['Religion','Sport','Deutsch','Mathe','Sachunterricht',''],
+      Dienstag: ['','Englisch','Leseband/Deutsch','Deutsch','Kunst',''],
+      Mittwoch: ['Sport','Deutsch','Mathe','Mathe','Leseband/Deutsch',''],
+      Donnerstag: ['Sport','Englisch','Deutsch','Sachuntericht','Mathe',''],
+      Freitag: ['Religion','Sachunterricht','Mathe','Mathe','Deutsch','Kunst']
     }
   };
 
