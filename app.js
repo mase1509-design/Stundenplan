@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  luisa: {
   const days = ["Montag","Dienstag","Mittwoch","Donnerstag","Freitag"];
   const times = [
     { from:"07:45", to:"08:30" },
@@ -25,6 +26,19 @@ document.addEventListener("DOMContentLoaded", () => {
     { from:"11:30", to:"12:15" },
     { from:"12:15", to:"13:00" }
   ];
+ };
+
+  simon: {
+  const days = ["Montag","Dienstag","Mittwoch","Donnerstag","Freitag"];
+  const times = [
+    { from:"07:30", to:"08:15" },
+    { from:"08:20", to:"09:05" },
+    { from:"09:15", to:"10:00" },
+    { from:"10:05", to:"10:50" },
+    { from:"11:05", to:"11:50" },
+    { from:"11:55", to:"12:40" }
+  ];
+ };
 
   function hmToMinutes(hm){
     const [h,m] = hm.split(":").map(Number);
