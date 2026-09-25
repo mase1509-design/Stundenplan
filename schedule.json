@@ -1,0 +1,216 @@
+{
+  "times": [
+    {
+      "period": 1,
+      "start": "07:30",
+      "end": "08:15"
+    },
+    {
+      "period": 2,
+      "start": "08:20",
+      "end": "09:05"
+    },
+    {
+      "period": 3,
+      "start": "09:15",
+      "end": "10:00"
+    },
+    {
+      "period": 4,
+      "start": "10:05",
+      "end": "10:50"
+    },
+    {
+      "period": 5,
+      "start": "11:05",
+      "end": "11:50"
+    },
+    {
+      "period": 6,
+      "start": "11:55",
+      "end": "12:40"
+    },
+    {
+      "period": 7,
+      "start": "13:20",
+      "end": "14:05"
+    },
+    {
+      "period": 8,
+      "start": "14:05",
+      "end": "14:50"
+    },
+    {
+      "period": 9,
+      "start": "15:00",
+      "end": "15:45"
+    },
+    {
+      "period": 10,
+      "start": "15:50",
+      "end": "16:35"
+    }
+  ],
+  "schedule": {
+    "Montag": [
+      {
+        "period": 1,
+        "subject": "E",
+        "room": "106"
+      },
+      {
+        "period": 2,
+        "subject": "E",
+        "room": "106"
+      },
+      {
+        "period": 3,
+        "subject": "Mu",
+        "room": "106"
+      },
+      {
+        "period": 4,
+        "subject": "O",
+        "room": "106"
+      },
+      {
+        "period": 5,
+        "subject": "Reli",
+        "room": "107"
+      },
+      {
+        "period": 6,
+        "subject": "Reli",
+        "room": "107"
+      }
+    ],
+    "Dienstag": [
+      {
+        "period": 1,
+        "subject": "B",
+        "room": "3H"
+      },
+      {
+        "period": 2,
+        "subject": "B",
+        "room": "3H"
+      },
+      {
+        "period": 3,
+        "subject": "O",
+        "room": "106"
+      },
+      {
+        "period": 4,
+        "subject": "D",
+        "room": "106"
+      },
+      {
+        "period": 5,
+        "subject": "E",
+        "room": "106"
+      },
+      {
+        "period": 6,
+        "subject": "BK",
+        "room": "106"
+      }
+    ],
+    "Mittwoch": [
+      {
+        "period": 1,
+        "subject": "S",
+        "room": "T3, SW"
+      },
+      {
+        "period": 2,
+        "subject": "S",
+        "room": "T3, SW"
+      },
+      {
+        "period": 3,
+        "subject": "BK",
+        "room": "BK2"
+      },
+      {
+        "period": 4,
+        "subject": "BK",
+        "room": "BK2"
+      },
+      {
+        "period": 5,
+        "subject": "M",
+        "room": "106"
+      },
+      {
+        "period": 6,
+        "subject": "M",
+        "room": "106"
+      }
+    ],
+    "Donnerstag": [
+      {
+        "period": 1,
+        "subject": "S",
+        "room": "T1"
+      },
+      {
+        "period": 2,
+        "subject": "S",
+        "room": "T1"
+      },
+      {
+        "period": 3,
+        "subject": "D",
+        "room": "106"
+      },
+      {
+        "period": 4,
+        "subject": "Geo",
+        "room": "NT1"
+      },
+      {
+        "period": 5,
+        "subject": "M",
+        "room": "106"
+      },
+      {
+        "period": 6,
+        "subject": "M",
+        "room": "106"
+      }
+    ],
+    "Freitag": [
+      {
+        "period": 1,
+        "subject": "M",
+        "room": "106"
+      },
+      {
+        "period": 2,
+        "subject": "Info",
+        "room": "com2"
+      },
+      {
+        "period": 3,
+        "subject": "E",
+        "room": "106"
+      },
+      {
+        "period": 4,
+        "subject": "E",
+        "room": "106"
+      },
+      {
+        "period": 5,
+        "subject": "D",
+        "room": "106"
+      },
+      {
+        "period": 6,
+        "subject": "Mu",
+        "room": "Mu2"
+      }
+    ]
+  }
+}
