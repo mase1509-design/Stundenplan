@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#2e8b57">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon.svg">
+<title>Stundenplan</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <div class="eyebrow">Stundenplan</div>
+    <h1 id="title">Simon</h1>
+  </div>
+  <div class="profiles">
+    <button class="profile active" data-profile="simon">Simon</button>
+    <button class="profile" data-profile="luisa">Luisa</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <span id="dateLabel"></span>
+      <strong id="clock"></strong>
+    </div>
+    <div class="current">
+      <span>Jetzt</span>
+      <b id="currentSubject">–</b>
+    </div>
+  </section>
+
+  <nav class="days" id="days"></nav>
+  <section id="lessons" class="lessons"></section>
+</main>
+
+<footer>Alle Daten bleiben auf diesem Gerät gespeichert.</footer>
+<script src="app.js"></script>
+</body>
+</html>
